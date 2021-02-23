@@ -1,17 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Card } from './components/Card';
+import { PageTitle } from './components/page-title';
+import { AdminTemplate } from './templates/admin/admin';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello, world!
-        </p>
-      </header>
-    </div>
+    <AdminTemplate>
+      <PageTitle>
+        Hello, world!
+      </PageTitle>
+      <Card>
+
+      </Card>
+    </AdminTemplate>
   );
 }
 
