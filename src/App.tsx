@@ -1,18 +1,9 @@
 import React from 'react';
-import { Card } from './components/Card';
-import { PageTitle } from './components/page-title';
-import { AdminTemplate } from './templates/admin/admin';
+import { Router } from './router';
 
 function App() {
   return (
-    <AdminTemplate>
-      <PageTitle>
-        Hello, world!
-      </PageTitle>
-      <Card>
-
-      </Card>
-    </AdminTemplate>
+    <Router />
   );
 }
 
