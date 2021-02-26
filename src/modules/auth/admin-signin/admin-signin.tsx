@@ -1,11 +1,23 @@
-import { faLock, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import styled from 'styled-components';
+import { faLock, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { AuthInput } from '../../../components/auth-input';
 import { AuthTemplate } from '../../../templates/auth/auth';
 import { ReactComponent as ShieldImage }  from '../../../asset/icons/SVG/Protection.svg';
+import { Formik } from 'formik';
+import { ValidationWrapper } from '../../../components/validation-wrapper';
+import { Spinner } from '../../../components/spinner';
+import { useAdminSignin } from './admin-signin.hook';
+import * as Yup from 'yup';
+import styled from 'styled-components';
+
+const SignupFormValidationSchema = Yup.object().shape({
+    email: Yup.string().email('Deve ser um email válido.').required('Campo obrigatório'),
+    password: Yup.string().required('Campo obrigatório')
+});
 
 export function AdminSignin() {
+    const { authenticateUser, isSubmiting } = useAdminSignin();
+
     return (
         <AuthTemplate>
             <LoginContainer>
@@ -21,27 +33,46 @@ export function AdminSignin() {
                     <LoginCardTitle>
                         Acesse sua conta usando seu email e senha :)
                     </LoginCardTitle>
-                    <LoginCardForm>
-                        <AuthInput
-                            name="email"
-                            type="email"
-                            icon={faUserCircle}
-                            placeholder="Digite seu email"
-                        />
-                        <AuthInput
-                            name="password"
-                            type="password"
-                            icon={faLock}
-                            placeholder="Digite sua senha"
-                        />
-                        <LoginCardFormButton>
-                            Acessar
-                        </LoginCardFormButton>
+                    <Formik
+                        initialValues={{ email: '', password: '' }}
+                        validationSchema={SignupFormValidationSchema}
+                        onSubmit={authenticateUser}
+                        validateOnBlur
+                    >
+                        {
+                            ({ values, errors, handleChange, handleSubmit }) => (
+                                <LoginCardForm onSubmit={handleSubmit}>
+                                    <LoginCardFormField name="email">
+                                        <AuthInput
+                                            name="email"
+                                            type="email"
+                                            icon={faUserCircle}
+                                            placeholder="Digite seu email"
+                                            value={values.email}
+                                            onChange={handleChange}
+                                        />
+                                    </LoginCardFormField>
+                                    <LoginCardFormField name="password">
+                                        <AuthInput
+                                            name="password"
+                                            type="password"
+                                            icon={faLock}
+                                            placeholder="Digite sua senha"
+                                            value={values.password}
+                                            onChange={handleChange}
+                                        />
+                                    </LoginCardFormField>
+                                    <LoginCardFormButton>
+                                        { isSubmiting ? <LoginCardFormButtonSpinner /> : 'Acessar' }
+                                    </LoginCardFormButton>
 
-                        <LoginCardFormLogo />
-                    </LoginCardForm>
+                                    <LoginCardFormLogo />
+                                </LoginCardForm>
+                            )
+                        }
+                    </Formik>
                     <LoginCardFooter>
-                        BolaoBet© { (new Date()).getFullYear() } | Todos os direitos reservados
+                        BolaoBet © { (new Date()).getFullYear() } | Todos os direitos reservados
                     </LoginCardFooter>
                 </LoginCard>
             </LoginContainer>
@@ -107,6 +138,10 @@ const LoginCardForm = styled.form`
     width: 100%;
 `;
 
+const LoginCardFormField = styled(ValidationWrapper)`
+    margin-bottom: 20px;
+`;
+
 const LoginCardFormLogo = styled(ShieldImage)`
     height: 50px;
     display: block;
@@ -128,6 +163,14 @@ const LoginCardFormButton = styled.button`
     padding: 13px 0;
     border-radius: 4px;
     margin-top: 20px;
+    cursor: pointer;
+`;
+
+const LoginCardFormButtonSpinner = styled(Spinner)`
+    display: block;
+    margin: 0 auto;
+    width: 30px;
+    height: 30px;
 `;
 
 const LoginCardFooter = styled.p`

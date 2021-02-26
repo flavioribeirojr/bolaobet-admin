@@ -12,7 +12,7 @@ export function Sidebar() {
         <Aside collapsed={isSidebarCollapsed}>
             <TitleBar collapsed={isSidebarCollapsed}>
                 <Title collapsed={isSidebarCollapsed}>
-                    BolaoBET
+                    Bolao<b>Bet</b>
                 </Title>
 
                 <SidebarToggleButton onClick={() => setSidebarCollapse(!isSidebarCollapsed)}>
@@ -92,8 +92,13 @@ const TitleBar = styled.div`
 `;
 
 const Title = styled.h1`
-    font-size: 1.5rem;
-    color: #ff3636;
+    font-size: 1.7rem;
+    color: #3e3e3e;
+    font-weight: 900;
+
+    b {
+        color: #ff3636;
+    }
 
     ${ (props: AsideProps) => props.collapsed && css`display: none;` }
 `;

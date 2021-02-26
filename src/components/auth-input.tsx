@@ -12,6 +12,7 @@ export function AuthInput(props: AuthInputProps) {
                 type={props.type}
                 placeholder={props.placeholder}
                 autoComplete="off"
+                onChange={props.onChange}
             />
         </Group>
     );
@@ -22,7 +23,8 @@ type AuthInputProps = {
     name: string,
     type: string,
     placeholder?: string,
-    value?: any
+    value?: any,
+    onChange?: (event: any) => any
 }
 
 const Group = styled.div`
@@ -33,7 +35,6 @@ const Group = styled.div`
     display: flex;
     align-items: center;
     padding: 0 15px;
-    margin-bottom: 20px;
 `;
 
 const GroupIcon = styled(FontAwesomeIcon)`
@@ -47,4 +48,8 @@ const Input = styled.input`
     color: #696969;
     outline: none;
     font-size: .9em;
+
+    &:invalid {
+        box-shadow: none;
+    }
 `;
