@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { useAdminLoader } from './admin-loader';
-import BetList from './bet-list/bet-list';
+import BetList from './bet/bet-list/bet-list';
 
 export function AdminRouter() {
     const admin = useAdminLoader();

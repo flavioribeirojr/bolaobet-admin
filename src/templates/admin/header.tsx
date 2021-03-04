@@ -18,8 +18,8 @@ export function Header() {
 }
 
 const HeaderBackground = styled.header`
-    height: 160px;
-    background-color: #11cdef;
+    height: 190px;
+    background-color: #38d794;
 `;
 
 const Navigation = styled.nav`
