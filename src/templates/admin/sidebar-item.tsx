@@ -2,11 +2,15 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faAngleRight, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-export function SidebarItem({ icon, iconColor, title, collapsed, isCurrentlyAvailable = true }: SidebarItemProps) {
+export function SidebarItem({ icon, iconColor, title, collapsed, isCurrentlyAvailable = true, link }: SidebarItemProps) {
     return (
-        <NavigationLink collapsed={collapsed}>
+        <NavigationLink
+            to={isCurrentlyAvailable ? link : ''}
+            collapsed={collapsed}
+        >
             <Icon
                 icon={icon}
                 color={iconColor}
@@ -50,7 +54,7 @@ type NavigationLinkProps = {
     collapsed?: boolean;
 }
 
-const NavigationLink = styled.a`
+const NavigationLink = styled(Link)`
     display: grid;
     grid-template-columns: 40px auto auto;
     align-items: center;
@@ -58,6 +62,7 @@ const NavigationLink = styled.a`
     background-color: transparent;
     position: relative;
     transition: background-color .4s linear;
+    text-decoration: none;
 
     &:hover {
         background-color: #e5e5e563;
