@@ -3,7 +3,9 @@ import ReactPaginate from 'react-paginate';
 import styled from 'styled-components';
 
 function PaginationWrapper(props: PaginationProps) {
-    if (props.count < 2) {
+    const totalPages = Math.ceil(props.count / props.perPage);
+
+    if (totalPages < 2) {
         return null;
     }
 
@@ -16,7 +18,7 @@ function PaginationWrapper(props: PaginationProps) {
             nextClassName="pagination-next"
             breakLabel="..."
             breakClassName="break-me"
-            pageCount={props.count}
+            pageCount={totalPages}
             marginPagesDisplayed={2}
             pageRangeDisplayed={5}
             onPageChange={({ selected }) => props.onPageChange(selected)}
@@ -25,6 +27,7 @@ function PaginationWrapper(props: PaginationProps) {
 }
 
 type PaginationProps = {
+    perPage: number;
     count: number;
     onPageChange: (page: number) => any;
     className?: string;

@@ -12,3 +12,8 @@ export const CardTitle = styled.h2`
     color: #32325d;
     padding: 20px;
 `;
+
+export const CardBody = styled.div`
+    border-top: 1px solid #efefef;
+    padding: 20px;
+`;

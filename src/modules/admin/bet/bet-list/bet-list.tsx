@@ -81,6 +81,7 @@ function BetList() {
         </Table>
         <PaginationWrapper>
           <StyledPagination
+            perPage={10}
             count={totalBets}
             onPageChange={(page: number) => {}}
           />
