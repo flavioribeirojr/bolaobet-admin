@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { Header } from './header';
 import { Sidebar } from './sidebar';
 
-export function AdminTemplate({ children }: AdminTemplateProps) {
+export function AdminTemplate({ children, className }: AdminTemplateProps) {
     return (
-        <ScreenGrid>
+        <ScreenGrid className={className}>
             <Sidebar />
 
             <Content>
@@ -23,7 +23,8 @@ const ScreenGrid = styled.div`
 `;
 
 type AdminTemplateProps = {
-    children: JSX.Element[]
+    children: React.ReactNode,
+    className?: string
 }
 
 const Content = styled.div`

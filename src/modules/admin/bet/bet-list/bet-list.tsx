@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { Card, CardTitle } from '../../../../components/Card';
 import { PageNav, PageNavOptions, PageTitle, PageNavLink } from '../../../../components/page-title';
@@ -10,6 +11,7 @@ import { useBetList } from './bet-list.hook';
 
 function BetList() {
   const { betList, totalBets } = useBetList();
+  const navigationHistory = useHistory();
 
   return (
     <AdminTemplate>
@@ -53,7 +55,10 @@ function BetList() {
           <tbody>
             {
               betList.map(bet => (
-                <tr key={bet.id}>
+                <tr
+                  key={bet.id}
+                  onClick={() => navigationHistory.push(`/apostas/${bet.id}`)}
+                >
                   <td>
                     <ChampionshipCell>
                       <ChampionshipCellImage src={bet.championship.logo} />
