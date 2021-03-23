@@ -18,7 +18,7 @@ export function Header() {
 }
 
 const HeaderBackground = styled.header`
-    height: 190px;
+    height: 210px;
     background-color: #38d794;
 `;
 

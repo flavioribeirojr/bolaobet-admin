@@ -35,6 +35,6 @@ const Content = styled.div`
 
 const MainContent = styled.main`
     flex-grow: 1;
-    margin-top: -110px;
+    margin-top: -120px;
     padding: 0 50px;
 `;

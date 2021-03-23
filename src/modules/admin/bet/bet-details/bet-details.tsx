@@ -12,7 +12,7 @@ import { BetDetailsStatusCard } from './bet-details-status-card/bet-details-stat
 import * as dateFNS from 'date-fns';
 
 export function BetDetails() {
-    const bet = useBetDetails();
+    const { bet, erase } = useBetDetails();
 
     return (
         <StyledTemplate>
@@ -27,10 +27,10 @@ export function BetDetails() {
                                 { bet.name }
                             </BetName>
                             <BetOptions>
-                                <BetActionLink to={`/apostas/edicao/1`}>
+                                <BetActionLink to={`/apostas/edicao/${bet.id}`}>
                                     <FontAwesomeIcon icon={faEdit} />
                                 </BetActionLink>
-                                <BetActionButton>
+                                <BetActionButton onClick={erase}>
                                     <FontAwesomeIcon icon={faBan} />
                                 </BetActionButton>
                             </BetOptions>
@@ -240,6 +240,7 @@ const BetActionButton = styled.button`
     background: linear-gradient(90deg, #E22929 0%, rgba(208, 77, 77, 0.9) 100%);
     color: white;
     font-size: 15px;
+    cursor: pointer;
 `;
 
 const CountersGrid = styled.div`

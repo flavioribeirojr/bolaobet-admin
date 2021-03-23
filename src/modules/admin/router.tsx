@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import { useAdminLoader } from './admin-loader';
 import { BetCreation } from './bet/bet-creation/bet-creation';
 import { BetDetails } from './bet/bet-details/bet-details';
+import { BetEdit } from './bet/bet-edit/bet-edit';
 import BetList from './bet/bet-list/bet-list';
 
 export function AdminRouter() {
@@ -22,6 +23,9 @@ export function AdminRouter() {
             </Route>
             <Route exact path="/apostas/nova">
                 <BetCreation />
+            </Route>
+            <Route exact path="/apostas/edicao/:id">
+                <BetEdit />
             </Route>
             <Route exact path="/apostas/:id">
                 <BetDetails />

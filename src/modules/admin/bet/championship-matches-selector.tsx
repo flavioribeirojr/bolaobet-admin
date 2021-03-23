@@ -98,6 +98,7 @@ const ChampionshipLabel = styled.p`
     font-size: 16px;
     color: #32325d;
     margin-bottom: 25px;
+    margin-top: 25px;
 `;
 
 const RoundsGrid = styled.div`
@@ -111,8 +112,8 @@ const RoundsGrid = styled.div`
 const RoundCheckbox = styled(Checkbox)`
     padding: 15px;
     background: #00b09b;
-    background: -webkit-linear-gradient(to right, #00b09b, #96c93d);
-    background: linear-gradient(to right, #00b09b, #96c93d);
+    background: -webkit-linear-gradient(to right,#2bd2be,#a3e333);
+    background: linear-gradient(to right,#2bd2be,#a3e333);
     border-radius: 4px;
 
     .state {
