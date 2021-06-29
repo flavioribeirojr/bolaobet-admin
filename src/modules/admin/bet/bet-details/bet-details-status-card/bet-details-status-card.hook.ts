@@ -9,7 +9,7 @@ export function useBetDetailsStatusCard(bet: BetDetails) {
 
         const futureRounds = bet
             .rounds
-            .filter(round => dateFNS.isAfter(currentDate, new Date(round.startDate)));
+            .filter(round => dateFNS.isAfter(new Date(round.startDate), currentDate));
 
         const roundsSortedByDate = [...futureRounds].sort((firstRound, nextRound) => {
             return (new Date(nextRound.startDate)).getTime() - (new Date(firstRound.startDate)).getTime();

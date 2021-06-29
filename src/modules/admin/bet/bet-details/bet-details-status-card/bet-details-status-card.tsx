@@ -18,28 +18,34 @@ export function BetDetailsStatusCard(props: BetDetailsStatusCardProps) {
                     <StatusNextRoundTitle>
                         PRÓXIMA RODADA
                     </StatusNextRoundTitle>
-                    <StatusNextRoundDate>
-                        { dateFNS.format(new Date(nextRound.startDate), 'dd/MM/yyyy') }
-                    </StatusNextRoundDate>
-                    <StatusNextRoundMatch>
-                        <StatusNextRoundMatchFlag
-                            src={ nextRound.masterTeam.team.teamLogoURL }
-                            marginType="right"
-                        />
-                        <StatusNextRoundMatchTeamName>
-                            { nextRound.masterTeam.team.name }
-                        </StatusNextRoundMatchTeamName>
+                    {
+                        nextRound !== undefined && (
+                            <>
+                                <StatusNextRoundDate>
+                                    { dateFNS.format(new Date(nextRound.startDate), 'dd/MM/yyyy') }
+                                </StatusNextRoundDate>
+                                <StatusNextRoundMatch>
+                                    <StatusNextRoundMatchFlag
+                                        src={ nextRound.masterTeam.team.teamLogoURL }
+                                        marginType="right"
+                                    />
+                                    <StatusNextRoundMatchTeamName>
+                                        { nextRound.masterTeam.team.name }
+                                    </StatusNextRoundMatchTeamName>
 
-                        <StatusNextRoundMatchIcon icon={faTimes} />
+                                    <StatusNextRoundMatchIcon icon={faTimes} />
 
-                        <StatusNextRoundMatchTeamName>
-                            { nextRound.visitingTeam.team.name }
-                        </StatusNextRoundMatchTeamName>
-                        <StatusNextRoundMatchFlag
-                            src={ nextRound.visitingTeam.team.teamLogoURL }
-                            marginType="left"
-                        />
-                    </StatusNextRoundMatch>
+                                    <StatusNextRoundMatchTeamName>
+                                        { nextRound.visitingTeam.team.name }
+                                    </StatusNextRoundMatchTeamName>
+                                    <StatusNextRoundMatchFlag
+                                        src={ nextRound.visitingTeam.team.teamLogoURL }
+                                        marginType="left"
+                                    />
+                                </StatusNextRoundMatch>
+                            </>
+                        )
+                    }
                 </StatusNextRound>
 
                 <StatusCurrentChampion>
